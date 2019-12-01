@@ -3,7 +3,9 @@ Twitch Channel Points Autoclicker browser extension
 
 
 Google Chrome: https://chrome.google.com/webstore/detail/pbeamibpehihpjljabhnchghlbneiane/
+
 Mozilla Firefox: https://addons.mozilla.org/en-GB/firefox/addon/twitch-points-autoclicker/
+
 
 What permissions are used and why: https://xinitrc.ca/autoclicker-permissions/
 
