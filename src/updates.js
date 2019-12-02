@@ -2,7 +2,7 @@ var updates = {
     '1.5': [
         '02 Dec 2019',
         'Code optimization.',
-		'Buxfix: mysterious red chests are now being clicked!',
+		'Bugfix: mysterious red chests are now being clicked!',
         'Updated bonus points button detection (in case of future updates).',
 		'Added Popup page to the extension.',
 		'Added Settings page to the extension.',
