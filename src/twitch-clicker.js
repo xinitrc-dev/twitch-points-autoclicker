@@ -1,8 +1,12 @@
 // Function to parse points text into a proper integer number
 function parsePoints(points_string) {
 	// Example string: "29,130 Channel Points"
-	points_string = points_string.slice(0, -15);
+	// or "29,310 Custom Name"
+	
+	// Remove , separators from the string
 	var cleaned_string = points_string.replace(/,/g, '');
+	// Grab part of the string before the first whitespace
+	cleaned_string = cleaned_string.substr(0, cleaned_string.indexOf(' '));
 	
 	var int_result = parseInt(cleaned_string);
 	return int_result;
@@ -10,12 +14,10 @@ function parsePoints(points_string) {
 
 // Finds the right element, clicks the bonus button
 function clickPoints() {
-	var accumulated_points = 0;
-	
 	try {
 		
 		// Get all clickable buttons inside 'community-points-summary'
-		var elems = document.querySelector('.community-points-summary').querySelectorAll('button.tw-interactive');
+		var elems = document.querySelector('.community-points-summary').querySelectorAll('button');
 		
 		// Click each button, except for the first, which is the points spending menu
 		// Record the point balance change as well
@@ -31,16 +33,15 @@ function clickPoints() {
 				// Record Balance post-click and save the difference
 				setTimeout(function(old_points) {
 					var new_points = parsePoints(document.getElementsByClassName('community-points-summary')[0].children[0].children[1].children[1].textContent);
-					accumulated_points += (new_points - old_points);
+					var accumulated_points = (new_points - old_points);
+
+					// Send accumulatedPoints over to background.js to add to the saved value
+					if (accumulated_points != 0) {
+						updatePoints(accumulated_points);
+					}
 				}, 5000, old_points);
 			}
 		});
-		// Send accumulatedPoints over to background.js to add to the saved value
-		setTimeout(function() {
-			if (accumulated_points != 0) {
-				updatePoints(accumulated_points);
-			}
-		}, 7000);
     }
     catch(err) {}
 }
@@ -86,14 +87,14 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
 
 // Run main functions after 30 second delay to let other extensions load and potentially modify HTML
 function main() {
-	document.getElementsByClassName('community-points-summary').unbindArrive('button.tw-interactive');
+	document.getElementsByClassName('community-points-summary').unbindArrive('button');
 
 	setTimeout(function() {
 		// Pre-check
 		clickPoints();
 
 		// React to creation of an element with the clicking points script
-		document.getElementsByClassName('community-points-summary').arrive('button.tw-interactive', clickPoints);
+		document.getElementsByClassName('community-points-summary').arrive('button', clickPoints);
 		
 		hideBonusPointsSection();
 	}, 10000);
