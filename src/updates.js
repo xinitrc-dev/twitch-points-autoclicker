@@ -1,8 +1,13 @@
 var updates = {
+	'1.5.1': [
+		'04 Dec 2019',
+		'Bug Fixed: Extension fails to work when switching pages on Twitch website',
+		'More code optimization'
+	],
     '1.5': [
         '02 Dec 2019',
         'Code optimization.',
-		'Bugfix: mysterious red chests are now being clicked!',
+		'Bug Fixed: mysterious red chests are now being clicked!',
         'Updated bonus points button detection (in case of future updates).',
 		'Added Popup page to the extension.',
 		'Added Settings page to the extension.',

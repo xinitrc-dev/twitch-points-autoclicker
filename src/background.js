@@ -122,5 +122,25 @@ chrome.runtime.onMessage.addListener(
 		}
 });
 
+// Handle URL change for Twitch Tabs to prevent bonus points detection from breaking
+chrome.tabs.onUpdated.addListener(function(tabID, changeInfo, tab) {
+	if(!('url' in changeInfo)) {
+		// URL hasn't changed, ignoring
+		return
+	}
+	if(!(changeInfo.url.toUpperCase().indexOf('twitch.tv'.toUpperCase()) !== -1)) {
+		// Not a Twitch.tv tab, ignoring
+		return
+	}
+	
+	// Initializes handshake with potential twitch-clicker.js script inside the tab
+	chrome.tabs.sendMessage(tab.id, {
+	    urlChanged: changeInfo
+	}, function (msg) {
+	    if (chrome.runtime.lastError) { msg = {}; } else { msg = msg || {}; }
+	});
+
+});
+
 // Create popup for the extension button
 chrome.browserAction.setPopup({popup: 'popup.html'})

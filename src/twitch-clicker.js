@@ -1,3 +1,5 @@
+var true_check = false;
+
 // Function to parse points text into a proper integer number
 function parsePoints(points_string) {
 	// Example string: "29,130 Channel Points"
@@ -60,17 +62,20 @@ function hideBonusPointsSection() {
 		hideBonusChests: false,
 	}, function(items) {
 		var hideBonusChests = items.hideBonusChests;
-		var value;
+
 		if (hideBonusChests) {
-			value = "none";
+			var value = "none";
 		}
 		else {
-			value = "block";
+			var value = "block";
 		}
-		// Chests themselves
-		document.getElementsByClassName('community-points-summary')[0].children[1].style.display = value;
-		// Floaty +50 text
-		document.getElementsByClassName('community-points-summary')[0].children[0].children[3].style.display = value;
+		
+		if (document.body.contains(document.getElementsByClassName('community-points-summary')[0])) {
+			// Chests themselves
+			document.getElementsByClassName('community-points-summary')[0].children[1].style.display = value;
+			// Floaty +50 text
+			document.getElementsByClassName('community-points-summary')[0].children[0].children[3].style.display = value;
+		}
 	});
 }
 
@@ -83,22 +88,45 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
 		sendResponse({status: 'ok'});
 		hideBonusPointsSection();
 	}
+	if ('urlChanged' in msg) {
+		true_check = true;
+		setTimeout(checkPage, 5000);
+		sendResponse({status: 'ok'})
+	}
 });
 
-// Run main functions after 30 second delay to let other extensions load and potentially modify HTML
-function main() {
-	document.getElementsByClassName('community-points-summary').unbindArrive('button');
+function checkPage() {
+	// Prevent firing script upon simultaneous redirects and fast page switching
+	if (!true_check) { return }
+	true_check = false;
+	
+	Arrive.unbindAllArrive();
+	
+	if (document.body.contains(document.getElementsByClassName('community-points-summary')[0])) {
+		// Presumably on a channel page that already contains the points section div
+		console.log('Detected inside of a channel page.');
 
-	setTimeout(function() {
 		// Pre-check
 		clickPoints();
-
-		// React to creation of an element with the clicking points script
-		document.getElementsByClassName('community-points-summary').arrive('button', clickPoints);
 		
 		hideBonusPointsSection();
+
+		document.getElementsByClassName('community-points-summary').arrive('button', clickPoints);
+	}
+	else {
+		// Presumably outside of a channel page
+		console.log('Detected outside of a channel page.');
+	}
+}
+
+// Run main functions after 10 second delay to let other extensions load and potentially modify HTML
+function main() {
+	setTimeout(function() {
+		console.log('Twitch Points Autoclicker: Initialized!');
+
+		true_check = true;
+		checkPage();
 	}, 10000);
 }
 
-console.log('Twitch Points Autoclicker: Initialized!');
 main();
