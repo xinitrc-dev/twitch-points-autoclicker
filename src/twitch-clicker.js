@@ -5,8 +5,8 @@ function parsePoints(points_string) {
 	// Example string: "29,130 Channel Points"
 	// or "29,310 Custom Name"
 	
-	// Remove , separators from the string
-	var cleaned_string = points_string.replace(/,/g, '');
+	// Remove , and . separators from the string
+	var cleaned_string = points_string.replace(/,/g, '').replace(/./g, '');
 	// Grab part of the string before the first whitespace
 	cleaned_string = cleaned_string.substr(0, cleaned_string.indexOf(' '));
 	
@@ -38,7 +38,7 @@ function clickPoints() {
 					var accumulated_points = (new_points - old_points);
 
 					// Send accumulatedPoints over to background.js to add to the saved value
-					if (accumulated_points != 0) {
+					if (accumulated_points > 0) {
 						updatePoints(accumulated_points);
 					}
 				}, 5000, old_points);
