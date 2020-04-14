@@ -1,4 +1,9 @@
 var updates = {
+	'1.5.2': [
+		'14 Apr 2020',
+		'Bug Fixed: Extension couldn\'t properly parse accumulated channel points to store, if the "." was used instead of "," separator based on locale',
+		'Tad more code optimization'
+	],
 	'1.5.1': [
 		'04 Dec 2019',
 		'Bug Fixed: Extension fails to work when switching pages on Twitch website',
