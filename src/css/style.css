@@ -1,0 +1,219 @@
+@font-face { font-family: Whitney; src: url('./fonts/whitney-regular.woff'); }
+@font-face { font-family: Whitney; font-weight: bold; src: url('./fonts/whitney-bold.woff'); }
+@font-face { font-family: Whitney; font-weight: 200; src: url('./fonts/whitney-light.woff'); }
+
+.popup {
+    padding-bottom: 20px;
+    margin-top: 0px;
+    width: 200px;
+    height: 120px;
+    align-items: center;
+    font-size: 15px;
+    background-color: #F5F5F5;
+    font-family: Whitney, Arial, sans-serif;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+#accumulatedPoints {
+    padding-top: 4px;
+    padding-left: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    float: left;
+    color: #9147ff;
+    text-shadow: -1.4px 0 black, 0 1.4px black, 1.4px 0 black, 0 -1.4px black;
+}
+
+body {
+    padding-top: 10px;
+    margin: 10px;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    background-color: #F5F5F5;
+    font-family: Whitney, Arial, sans-serif;
+}
+
+h1 {
+    padding-left: 40px;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+#date {
+    padding-left: 40px;
+    margin-top: 0;
+}
+
+#filler {
+    width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.vdesc {
+    margin: 0 auto;
+    text-align: left;
+}
+
+a {
+    color: #9147ff;
+}
+
+a:visited {
+    color: #551a8b;
+}
+
+select {
+    font-family: inherit;
+    font-size: 1em;
+    background-color: #e6e6e6;
+}
+
+#icon_example {
+    height: 30px;
+}
+
+#main-container {
+    width: 705px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+table {
+    border-spacing: 5px;
+    margin: 0 auto;
+}
+
+.right-td {
+    text-align: right;
+}
+
+.buttonContainer {
+    display: inline-block;
+    margin: 10px 0;
+}
+
+/*-----------------CheckBox-----------------*/
+
+.inputGroup {
+    background-color: #fff;
+    display: block;
+    margin: 10px 0;
+    position: relative;
+    border-radius: 25px;
+}
+
+.inputGroup label {
+    padding: 12px 30px;
+    width: 100%;
+    display: block;
+    text-align: left;
+    color: #3c454c;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    transition: color 200ms ease-in;
+    overflow: hidden;
+}
+
+.inputGroup label:before {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    content: '';
+    background-color: #5562eb;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale3d(1, 1, 1);
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    z-index: -1;
+}
+
+.inputGroup label:after {
+    width: 32px;
+    height: 32px;
+    content: '';
+    border: 2px solid #d1d7dc;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+    background-repeat: no-repeat;
+    background-position: 2px 3px;
+    border-radius: 50%;
+    z-index: 2;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: all 200ms ease-in;
+}
+
+.inputGroup input:checked ~ label {
+    color: #fff;
+}
+
+.inputGroup input:checked ~ label:before {
+    transform: translate(-50%, -50%) scale3d(56, 56, 1);
+    opacity: 1;
+}
+
+.inputGroup input:checked ~ label:after {
+    background-color: #54e0c7;
+    border-color: #54e0c7;
+}
+
+.inputGroup input {
+    width: 32px;
+    height: 32px;
+    order: 1;
+    z-index: 2;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.form {
+    padding: 0 16px;
+    max-width: 550px;
+    margin: 50px auto;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 36px;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+    border-radius: 25px;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+code {
+    background-color: #9aa3ac;
+    padding: 0 8px;
+}
+
+/*-----------------Buttons-----------------*/
+.button {
+    padding: 8px;
+    border-radius: 20px;
+    height: 40px;
+    text-align: center;
+    font-size: 1em;
+    background-color: #9147ff;
+    color: #fff;
+}
+
+.button:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: #6441A5;
+}
