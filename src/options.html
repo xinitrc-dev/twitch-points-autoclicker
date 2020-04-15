@@ -1,97 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Channel Points Autoclicker Options</title>
-    <style type="text/css">
-        @font-face { font-family: Whitney; src: url('./fonts/whitney-regular.woff'); }
-        @font-face { font-family: Whitney; font-weight: bold; src: url('./fonts/whitney-bold.woff'); }
-        @font-face { font-family: Whitney; font-weight: 200; src: url('./fonts/whitney-regular.woff'); }
-        body {
-            padding-top: 10px;
-            align-items: center;
-            text-align: center;
-            margin: 10px;
-            white-space: nowrap;
-            font-weight: normal;
-            font-size: 18px;
-            background-color: #76737b;
-            color: white;
-            font-family: Whitney, Arial, sans-serif;
-        }
-        button {
-            font-family : inherit;
-            font-size: 1em;
-			
-			padding-bottom: 3px;
-            border: 2px solid hsla(0,0%,100%,1);
-            border-radius: 20px;
-            height: 35px;
-            width: auto;
-            text-align: center;
-            font-family: inherit;
-            font-size: 1em;
-            color: #fff;
-            background-color: rgba(63,66,70,.1);
-            text-decoration: none;
-            opacity: 1;
-        }
-		button:hover {
-			color: #cdb3ff;
-			border: 2px solid #cdb3ff;
-            cursor: pointer;
-            opacity: 1;
-        }
-        select {
-            font-family: inherit;
-            font-size: 1em;
-            background-color: #e6e6e6;
-        }
-        #icon_example {
-            height: 30px;
-        }
-		#main-container {
-			width: 705px;
-			margin: 0 auto;
-            text-align: left;
-		}
-		table {
-			border-spacing: 5px;
-			margin: 0 auto;
-		}
-		.right-td {
-			text-align: right;
-		}
-    </style>
-</head>
-<body>
+    <head>
+        <title>Channel Points Autoclicker Options</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/checkbox.scss">
+    </head>
+    <body>
+        <img src="banner.png" alt="Twitch Channel Points Autoclicker">
 
-<img src="banner.png" alt="Twitch Channel Points Autoclicker" align="middle" style="text-align: center"><br><br><br>
+        <form class="form">
+  
+            <div class="inputGroup">
+              <input id="showBrowserNotifications" name="showBrowserNotifications" type="checkbox"/>
+              <label for="showBrowserNotifications">Browser Notifications enabled</label>
+            </div>
+            
+            <div class="inputGroup">
+              <input id="showAccumulatedPoints" name="showAccumulatedPoints" type="checkbox"/>
+              <label for="showAccumulatedPoints">Display number of points accumulated with <br> the help of the extension</label>
+            </div>
 
-<div id="main-container">
-	<table>
-		<tr>
-			<td>Browser Notifications enabled: </td>
-			<td class="right-td"><input type="checkbox" id="showBrowserNotifications"></td>
-		</tr>
-		<tr>
-			<td>Display number of points accumulated with the help of the extension:</td>
-			<td class="right-td"><input type="checkbox" id="showAccumulatedPoints"></td>
-		</tr>
-		<tr>
-			<td>Hide bonus channel points chests visually:</td>
-			<td class="right-td"><input type="checkbox" id="hideBonusChests"></td>
-		</tr>
-		<tr style="height: 20px;"></tr>
-		<tr>
-			<td><button id="save">Save Settings</button></td>
-			<td class="right-td"><button id="updates">View Updates</button></td>
-		</tr>
-		<tr>
-		<td><div id="status"></div></td>
-		</tr>
-	</table>
-</div>
+            <div class="inputGroup">
+                <input id="hideBonusChests" name="hideBonusChests" type="checkbox"/>
+                <label for="hideBonusChests">Hide bonus channel points chests visually</label>
+            </div>
 
-<script src="options.js"></script>
-</body>
+            <div class="buttonContainer">
+                <button class="button" id="save">Save Settings</button>
+                <button class="button" id="updates">View Updates</button>
+            </div>
+            <div id="status"></div>
+          </form>
+    </body>
+    <script src="options.js"></script>
 </html>
