@@ -6,7 +6,7 @@ function parsePoints(points_string) {
 	// or "29,310 Custom Name"
 	
 	// Remove , and . separators from the string
-	var cleaned_string = points_string.replace(/,/g, '').replace(/./g, '');
+	var cleaned_string = points_string.replace(/,/g, '').replace(/\./g, '');
 	// Grab part of the string before the first whitespace
 	cleaned_string = cleaned_string.substr(0, cleaned_string.indexOf(' '));
 	
