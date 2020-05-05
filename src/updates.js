@@ -1,4 +1,8 @@
 var updates = {
+	'1.5.3': [
+		'05 May 2020',
+		'Bug Fixed: Collected points counter is now fixed.'
+	],
 	'1.5.2': [
 		'14 Apr 2020',
 		'Bug Fixed: Extension couldn\'t properly parse accumulated channel points to store, if the "." was used instead of "," separator based on locale',
