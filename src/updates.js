@@ -1,4 +1,8 @@
 var updates = {
+	'1.5.5': [
+		'07 August 2020',
+		'Bug Fixed: Updated to accommodate twitch layout changes.'
+	],
 	'1.5.3': [
 		'05 May 2020',
 		'Bug Fixed: Collected points counter is now fixed.'

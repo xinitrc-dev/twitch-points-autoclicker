@@ -16,36 +16,34 @@ function parsePoints(points_string) {
 
 // Finds the right element, clicks the bonus button
 function clickPoints() {
-	try {
-		
-		// Get all clickable buttons inside 'community-points-summary'
-		var elems = document.querySelector('.community-points-summary').querySelectorAll('button');
-		
-		// Click each button, except for the first, which is the points spending menu
-		// Record the point balance change as well
-		elems.forEach(function(currentElem, index, arr) {
-			if (index != 0) {
-				// Record Balance pre-click
-				var old_points = parsePoints(document.getElementsByClassName('community-points-summary')[0].children[0].children[1].children[1].textContent);
-				
-				// Click the button and display the console log
-				console.log('Twitch Points Autoclicker: Clicked!');
-				currentElem.click();
-				
-				// Record Balance post-click and save the difference
-				setTimeout(function(old_points) {
-					var new_points = parsePoints(document.getElementsByClassName('community-points-summary')[0].children[0].children[1].children[1].textContent);
-					var accumulated_points = (new_points - old_points);
+	console.log('Element detected.')
+	
+	// Get all clickable buttons inside 'community-points-summary'
+	var elems = document.querySelector('.community-points-summary').querySelectorAll('button');
+	
+	// Click each button, except for the first, which is the points spending menu
+	// Record the point balance change as well
+	elems.forEach(function(currentElem, index, arr) {
+		if (index != 0) {
+			// Record Balance pre-click
+			var old_points = parsePoints(document.getElementsByClassName('community-points-summary')[0].children[0].children[1].children[0].textContent);
+			
+			// Click the button and display the console log
+			console.log('Twitch Points Autoclicker: Clicked!');
+			currentElem.click();
+			
+			// Record Balance post-click and save the difference
+			setTimeout(function(old_points) {
+				var new_points = parsePoints(document.getElementsByClassName('community-points-summary')[0].children[0].children[1].children[0].textContent);
+				var accumulated_points = (new_points - old_points);
 
-					// Send accumulatedPoints over to background.js to add to the saved value
-					if (accumulated_points > 0) {
-						updatePoints(accumulated_points);
-					}
-				}, 5000, old_points);
-			}
-		});
-    }
-    catch(err) {}
+				// Send accumulatedPoints over to background.js to add to the saved value
+				if (accumulated_points > 0) {
+					updatePoints(accumulated_points);
+				}
+			}, 5000, old_points);
+		}
+	});
 }
 
 function updatePoints(accumulatedPoints) {
