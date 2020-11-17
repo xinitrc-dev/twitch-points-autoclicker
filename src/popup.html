@@ -1,69 +1,13 @@
 <!doctype html>
 <html>
-<head>
-	<title>Channel Points Autoclicker Popup</title>
-	<style type='text/css'>
-		@font-face { font-family: Whitney; src: url('./fonts/whitney-regular.woff'); }
-		@font-face { font-family: Whitney; font-weight: bold; src: url('./fonts/whitney-bold.woff'); }
-		@font-face { font-family: Whitney; font-weight: 200; src: url('./fonts/whitney-light.woff'); }
-		body {
-            padding-bottom: 20px;
-			margin-top: 0px;
-			width: 200px;
-			height: 90px;
-			align-items: center;
-            font-size: 15px;
-			background-color: #76737b;
-			font-family: Whitney, Arial, sans-serif;
-            -webkit-font-smoothing: subpixel-antialiased;
-		}
-		a {
-            color: black;
-			text-decoration: none;
-		}
-        a:hover {
-            font-size: 16px;
-        }
-        #settings {
-            padding-bottom: 3px;
-            border-radius: 20px;
-            height: 35px;
-            width: 80px;
-            float: right;
-            text-align: center;
-            font-family: inherit;
-            font-size: 1em;
-            background-color: rgba(63,66,70, 0);
-            text-decoration: none;
-            opacity: 1;
-			color: #cdb3ff;
-			border: 2px solid #cdb3ff;
-        }
-        #settings:hover {
-            cursor: pointer;
-            opacity: 1;
-			color: #fff;
-			border: 2px solid hsla(0,0%,100%,1);
-			color: #000;
-			border: 2px solid hsla(0,0%,0%,1);
-        }
-		#accumulatedPoints {
-			padding-top: 4px;
-			padding-left: 10px;
-			font-size: 24px;
-			font-weight: bold;
-			float: left;
-			color: #7d5bbe;
-			text-shadow: -1.4px 0 black, 0 1.4px black, 1.4px 0 black, 0 -1.4px black;
-		}
-	</style>
-</head>
-
-<body>
-	<img src='banner.png' id='Twitch Channel Points Autoclicker' style="width:200px;margin-bottom:10px;">
-    <div id='accumulatedPoints'></div>
-    <button id='settings'>Settings</button>
-
+	<head>
+		<title>Channel Points Autoclicker Popup</title>
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body class="popup">
+		<img src='banner.png' alt='Twitch Channel Points Autoclicker' style="width:200px;margin-bottom:10px;">
+		<div id='accumulatedPoints'></div>
+		<button class="button" id='settings' style="float: right;">Settings</button>
+	</body>
 	<script src='popup.js'></script>
-</body>
 </html>
