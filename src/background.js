@@ -103,43 +103,36 @@ chrome.notifications.onButtonClicked.addListener(function(notifId, btnIdx) {
     }
 });
 
-// Handle content script sending update for accumulated points
+// Handle content script sending update for bonus points clicks
 chrome.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
-		if (request.accumulatedChannelPoints) {
-			var accumulatedPoints;
+		if (request.clickedBonusPoints) {
 			chrome.storage.sync.get({
-				accumulatedPoints: 0,
+                clickedBonusPoints: 0,
 			}, function(items) {
-				accumulatedPoints = items.accumulatedPoints;
-			
-				var newPoints = parseInt(request.accumulatedChannelPoints);
-				accumulatedPoints += newPoints;
+                clickedBonusPoints += 1;
 				chrome.storage.sync.set({
-					accumulatedPoints: accumulatedPoints
+                    clickedBonusPoints: clickedBonusPoints
 				}, function(){});
 			});
 		}
 });
 
 // Handle URL change for Twitch Tabs to prevent bonus points detection from breaking
-chrome.tabs.onUpdated.addListener(function(tabID, changeInfo, tab) {
-	if(!('url' in changeInfo)) {
-		// URL hasn't changed, ignoring
-		return
-	}
-	if(!(changeInfo.url.toUpperCase().indexOf('twitch.tv'.toUpperCase()) !== -1)) {
+chrome.webNavigation.onHistoryStateUpdated.addListener(function(details) {
+    if(details.frameId === 0) { // indicates the navigation happens in the tab content window, not in a subframe
+        if(!(details.url.toUpperCase().indexOf('twitch.tv'.toUpperCase()) !== -1)) {
 		// Not a Twitch.tv tab, ignoring
-		return
-	}
-	
-	// Initializes handshake with potential twitch-clicker.js script inside the tab
-	chrome.tabs.sendMessage(tab.id, {
-	    urlChanged: changeInfo
-	}, function (msg) {
-	    if (chrome.runtime.lastError) { msg = {}; } else { msg = msg || {}; }
-	});
+		    return
+	    }
 
+        chrome.tabs.sendMessage(tab.id, {
+            urlChanged: 1
+        }, function (msg) {
+            if (chrome.runtime.lastError) { msg = {}; } else { msg = msg || {}; }
+        });
+        console.log("onHistoryStateUpdated");
+    }
 });
 
 // Create popup for the extension button

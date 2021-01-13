@@ -1,4 +1,9 @@
 var updates = {
+	'1.6': [
+		'13 January 2021',
+		'Changed Accumulated Points to be Number of times clicked, since Twitch hides the total amount of points.',
+		'Updated detection for changing the page, so the script doesn\'t break.'
+	],
 	'1.5.5': [
 		'07 August 2020',
 		'Bug Fixed: Updated to accommodate twitch layout changes.'
@@ -9,13 +14,13 @@ var updates = {
 	],
 	'1.5.2': [
 		'14 Apr 2020',
-		'Bug Fixed: Extension couldn\'t properly parse accumulated channel points to store, if the "." was used instead of "," separator based on locale',
-		'Tad more code optimization'
+		'Bug Fixed: Extension couldn\'t properly parse accumulated channel points to store, if the "." was used instead of "," separator based on locale.',
+		'Tad more code optimization.'
 	],
 	'1.5.1': [
 		'04 Dec 2019',
-		'Bug Fixed: Extension fails to work when switching pages on Twitch website',
-		'More code optimization'
+		'Bug Fixed: Extension fails to work when switching pages on Twitch website.',
+		'More code optimization.'
 	],
     '1.5': [
         '02 Dec 2019',

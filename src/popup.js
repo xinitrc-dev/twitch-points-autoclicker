@@ -9,22 +9,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
     chrome.storage.sync.get({
         showAccumulatedPoints: false,
-		accumulatedPoints: 0
+		clickedBonusPoints: 0
     }, function (items) {
         var showAccumulatedPoints = items.showAccumulatedPoints;
-		var accumulatedPoints = items.accumulatedPoints;
+		var clickedBonusPoints = items.clickedBonusPoints;
         if (showAccumulatedPoints) {
-			if (accumulatedPoints > 99999) {
-				if (accumulatedPoints > 999999) {
-					accumulatedPoints = (accumulatedPoints / 1000000).toFixed(2);
-					accumulatedPoints += 'M';
+			if (clickedBonusPoints > 99999) {
+				if (clickedBonusPoints > 999999) {
+					clickedBonusPoints = (clickedBonusPoints / 1000000).toFixed(2);
+					clickedBonusPoints += 'M';
 				}
 				else {
-					accumulatedPoints = (accumulatedPoints / 1000).toFixed(2);
-					accumulatedPoints += 'K';
+					clickedBonusPoints = (clickedBonusPoints / 1000).toFixed(2);
+					clickedBonusPoints += 'K';
 				}
 			}
-			accumulatedPointsDiv.textContent = accumulatedPoints;
+			accumulatedPointsDiv.textContent = clickedBonusPoints;
 		}
 		else {
 			accumulatedPointsDiv.textContent = '';
