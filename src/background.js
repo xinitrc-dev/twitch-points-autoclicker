@@ -126,7 +126,7 @@ chrome.webNavigation.onHistoryStateUpdated.addListener(function(details) {
 		    return
 	    }
 
-        chrome.tabs.sendMessage(tab.id, {
+        chrome.tabs.sendMessage(details.tabId, {
             urlChanged: 1
         }, function (msg) {
             if (chrome.runtime.lastError) { msg = {}; } else { msg = msg || {}; }
