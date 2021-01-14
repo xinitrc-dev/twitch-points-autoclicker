@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 					clickedBonusPoints += 'K';
 				}
 			}
-			accumulatedPointsDiv.textContent = clickedBonusPoints;
+			accumulatedPointsDiv.textContent = 'Collected ' + clickedBonusPoints.toString() + ' times!';
 		}
 		else {
 			accumulatedPointsDiv.textContent = '';
