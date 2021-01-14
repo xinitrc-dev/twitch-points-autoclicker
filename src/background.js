@@ -110,9 +110,9 @@ chrome.runtime.onMessage.addListener(
 			chrome.storage.sync.get({
                 clickedBonusPoints: 0,
 			}, function(items) {
-                clickedBonusPoints += 1;
+                var clickedNum = items.clickedBonusPoints + 1;
 				chrome.storage.sync.set({
-                    clickedBonusPoints: clickedBonusPoints
+                    clickedBonusPoints: clickedNum
 				}, function(){});
 			});
 		}
