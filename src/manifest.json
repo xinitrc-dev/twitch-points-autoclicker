@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Twitch Channel Points Autoclicker",
   "description": "Automatically claims 'Channel Points' on Twitch",
-  "version": "1.6",
+  "version": "1.6.1",
   "icons": {
     "48": "icon48.png",
     "128": "icon128.png"
