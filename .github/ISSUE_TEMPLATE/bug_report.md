@@ -8,9 +8,12 @@ assignees: ''
 ---
 
 **Before Reporting**
-Refresh your page! (I know it sounds stupid, but trust me it works.)
+Refresh your Twitch page! (I know it sounds stupid, but trust me it works.)
 
-**If that fails, describe the bug**
+**If that fails, specify the version of the extension**
+This can either be the main version or LITE version
+
+**Describe the bug**
 A clear and concise description of what the bug is.
 
 **Note which logging steps are missing**
