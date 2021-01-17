@@ -2,7 +2,7 @@
 function clickPoints() {
 	try {
         // Get all clickable buttons inside 'community-points-summary'
-		var elems = document.querySelector('.community-points-summary').querySelectorAll('button');
+		let elems = document.querySelector('.community-points-summary').querySelectorAll('button');
 		
 		// Click each button, except for the first, which is the points spending menu
 		elems.forEach(function(currentElem, index, arr) {
@@ -17,10 +17,12 @@ function clickPoints() {
 	
 }
 
-console.log('Twitch Points Autoclicker: Initialized!');
+setTimeout(function() {
+	console.log('Twitch Points Autoclicker: Initialized!');
 
-// Pre-check
-clickPoints();
+	// Pre-check
+	clickPoints();
 
-// React to creation of an element with the clicking points script
-document.getElementsByClassName('community-points-summary').arrive('button', clickPoints);
+	// React to creation of an element with the clicking points script
+	document.getElementsByClassName('community-points-summary').arrive('button', clickPoints);
+}, 10000);
