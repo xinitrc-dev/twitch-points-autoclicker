@@ -6,6 +6,8 @@ Google Chrome: https://chrome.google.com/webstore/detail/pbeamibpehihpjljabhnchg
 
 Mozilla Firefox: https://addons.mozilla.org/en-GB/firefox/addon/twitch-points-autoclicker/
 
+Microsoft Edge: https://microsoftedge.microsoft.com/addons/detail/lndbggkcoalcjgclcpeojibgjcoegcbk
+
 
 What permissions are used and why: https://xinitrc.ca/autoclicker-permissions/
 
