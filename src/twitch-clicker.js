@@ -19,10 +19,28 @@ function clickPoints() {
 
 setTimeout(function() {
 	console.log('Twitch Points Autoclicker: Initialized!');
+	const ATTEMPT_NUM = 10;
 
-	// Pre-check
-	clickPoints();
+	(function loopie(i) {
+		setTimeout(function() {
 
-	// React to creation of an element with the clicking points script
-	document.getElementsByClassName('community-points-summary').arrive('button', clickPoints);
+			console.log('Twitch Points Autoclicker: Attempt ' + (11 - i) + '/' + ATTEMPT_NUM);
+
+			if (document.contains(document.getElementsByClassName('community-points-summary')[0])) {
+				console.log('Twitch Points Autoclicker: Success');
+
+				// Pre-check
+				clickPoints();
+
+				// React to creation of an element with the clicking points script
+				document.getElementsByClassName('community-points-summary').arrive('button', clickPoints);
+
+				i=1; // equivalent of break
+
+			}
+
+			if (--i) loopie(i);   //  decrement i and call myLoop again if i > 0
+		}, 10000)
+	})(ATTEMPT_NUM);
+
 }, 10000);
