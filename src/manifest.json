@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Twitch Channel Points Autoclicker",
   "description": "Automatically claims 'Channel Points' on Twitch",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "icons": {
     "48": "icon48.png",
     "128": "icon128.png"
@@ -20,14 +20,14 @@
   },
   "permissions": [
     "*://*.twitch.tv/*",
-	"tabs",
-	"storage",
-	"notifications",
+    "tabs",
+    "storage",
+    "notifications",
     "webNavigation"
   ],
   "web_accessible_resources": [
     "arrive-2.4.1.min.js",
-	"twitch-clicker.js"
+	  "twitch-clicker.js"
   ],
   "options_ui": {
 	"page": "options.html",
@@ -39,6 +39,14 @@
 	  "48": "icon48.png",
 	  "128": "icon128.png"
 	},
-    "default_popup": "popup.html"
+  "default_popup": "popup.html"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{3c9b993f-29b9-44c2-a913-def7b93a70b1}",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
   }
 }
