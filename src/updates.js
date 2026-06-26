@@ -1,4 +1,8 @@
 var updates = {
+	'1.7': [
+		'26 June 2026',
+		'Updated button detection to accommodate Twitch layout changes (PR: DaNeubi).',
+	],
 	'1.6': [
 		'13 January 2021',
 		'Changed Accumulated Points to be Number of times clicked, since Twitch hides the total amount of points.',
